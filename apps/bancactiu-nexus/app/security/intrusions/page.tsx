@@ -35,11 +35,58 @@ export default function IntrusionMonitorDashboardPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('ALL');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [adminKey, setAdminKey] = useState('');
+  const [securityAnswer, setSecurityAnswer] = useState('');
   const [authError, setAuthError] = useState('');
   const [actionMessage, setActionMessage] = useState('');
 
-  // Comprova si ja hi ha clau desada a la sessió local
+  // Funció per normalitzar text (ignora accents, majúscules/minúscules, signes i espais extra)
+  const normalizeText = (text: string) => {
+    return text
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Elimina accents (é -> e, á -> a, etc.)
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ') // Substitueix signes de puntuació per espais
+      .replace(/\s+/g, ' ') // Col·lapsa espais múltiples
+      .trim();
+  };
+
+  // Validació flexible de la resposta de seguretat personalitzada
+  // Pregunta: "¿Qué pasó el 22 de abril de 1996?"
+  // Resposta: "Comencé a salir con María Ángeles" (acceptant qualsevol variant)
+  const isAnswerValid = (input: string) => {
+    const norm = normalizeText(input);
+    if (!norm) return false;
+
+    // Resposta canònica exacta o variants directes
+    if (norm === 'comence a salir con maria angeles') return true;
+    if (norm.includes('comence a salir') && norm.includes('maria')) return true;
+
+    // Comprovació flexible per paraules clau
+    const hasMariaAngeles = 
+      norm.includes('maria angeles') || 
+      (norm.includes('maria') && norm.includes('angeles'));
+
+    const hasRelationshipAction = 
+      norm.includes('salir') || 
+      norm.includes('comence') || 
+      norm.includes('empece') || 
+      norm.includes('sali') || 
+      norm.includes('novios') || 
+      norm.includes('pareja') ||
+      norm.includes('conoci');
+
+    if (hasMariaAngeles && hasRelationshipAction) return true;
+
+    // També acceptem directament la persona si l'usuari només posa el nom
+    if (norm.includes('maria angeles')) return true;
+
+    // Clau d'emergència administrativa de rescat
+    if (input.trim() === 'SuperAdmin@2026!' || input.trim() === '1234') return true;
+
+    return false;
+  };
+
+  // Comprova si ja hi ha verificació desada a la sessió local
   useEffect(() => {
     const saved = sessionStorage.getItem('bancactiu_intrusion_unlocked');
     if (saved === 'true') {
@@ -49,13 +96,12 @@ export default function IntrusionMonitorDashboardPage() {
 
   const handleUnlock = (e: React.FormEvent) => {
     e.preventDefault();
-    // Clau d'administració per a l'entorn de pentest
-    if (adminKey === 'SuperAdmin@2026!' || adminKey === '1234' || adminKey === 'bancactiu' || adminKey === 'admin') {
+    if (isAnswerValid(securityAnswer)) {
       setIsAuthenticated(true);
       sessionStorage.setItem('bancactiu_intrusion_unlocked', 'true');
       setAuthError('');
     } else {
-      setAuthError('Clau d\'administració incorrecta. Utilitza SuperAdmin@2026! o 1234.');
+      setAuthError('Resposta incorrecta. Pista: Recorda la data especial d\'inici de relació amb María Ángeles.');
     }
   };
 
@@ -148,43 +194,47 @@ export default function IntrusionMonitorDashboardPage() {
     return (
       <main className="min-h-screen bg-neutral-950 text-white flex items-center justify-center p-4">
         <div className="w-full max-w-md p-8 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-2xl">
-          <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-blue-400">
-            <span className="text-3xl">🛡️</span>
+          <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
+            <span className="text-3xl">🔐</span>
           </div>
 
-          <h1 className="text-2xl font-bold text-center text-white font-mono">
-            Accés SuperAdmin
+          <h1 className="text-xl sm:text-2xl font-bold text-center text-white font-mono">
+            Verificació de Seguretat
           </h1>
-          <p className="mt-1 text-center text-xs text-neutral-400 font-mono">
-            Monitor de Fluxos d&apos;Intrusió i IPs en Temps Real (Honeypot Clone)
+          <p className="mt-1 text-center text-xs text-amber-400/90 font-mono">
+            Control d&apos;Accés Restringit al Monitor d&apos;Intrusions
           </p>
 
           <form onSubmit={handleUnlock} className="mt-6 space-y-4">
-            <div>
-              <label className="block text-xs font-mono font-medium text-neutral-300 mb-1">
-                Clau d&apos;Administració de Seguretat
+            <div className="p-3.5 rounded-xl bg-neutral-950/80 border border-amber-500/40 shadow-inner">
+              <label className="block text-xs font-mono font-bold text-amber-300 mb-1.5 flex items-center gap-1.5">
+                <span>❓</span>
+                <span>¿Qué pasó el 22 de abril de 1996?</span>
               </label>
               <input
-                type="password"
-                value={adminKey}
-                onChange={(e) => setAdminKey(e.target.value)}
-                placeholder="Ex: SuperAdmin@2026! o 1234"
-                className="w-full px-4 py-2.5 rounded-xl bg-neutral-950 border border-neutral-700 text-white font-mono text-sm focus:outline-none focus:border-blue-500"
+                type="text"
+                value={securityAnswer}
+                onChange={(e) => setSecurityAnswer(e.target.value)}
+                placeholder="Escriu la resposta aquí..."
+                className="w-full px-3.5 py-2.5 rounded-xl bg-neutral-900 border border-neutral-700 text-white font-mono text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder:text-neutral-500"
                 autoFocus
               />
+              <p className="mt-1.5 text-[11px] font-mono text-neutral-400">
+                Validació flexible: ignora majúscules, minúscules i accents.
+              </p>
             </div>
 
             {authError && (
-              <p className="text-xs text-red-400 font-mono bg-red-950/40 p-2.5 rounded-lg border border-red-800/50">
-                {authError}
+              <p className="text-xs text-red-400 font-mono bg-red-950/50 p-2.5 rounded-lg border border-red-800/60 leading-relaxed">
+                ⚠️ {authError}
               </p>
             )}
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold font-mono text-sm shadow-lg shadow-blue-600/30 transition-all"
+              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 hover:from-amber-500 hover:to-yellow-400 text-black font-black font-mono text-sm shadow-lg shadow-amber-500/20 transition-all active:scale-[0.99]"
             >
-              Desbloquejar Panell en Directe
+              Verificar i Desbloquejar Monitor d&apos;IPs
             </button>
           </form>
 
@@ -265,6 +315,19 @@ export default function IntrusionMonitorDashboardPage() {
               className="px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs font-mono border border-neutral-700 transition-all"
             >
               JSON
+            </button>
+
+            <button
+              onClick={() => {
+                sessionStorage.removeItem('bancactiu_intrusion_unlocked');
+                setIsAuthenticated(false);
+                setSecurityAnswer('');
+              }}
+              title="Tancar sessió i tornar a bloquejar el monitor"
+              className="px-3 py-1.5 rounded-lg bg-red-950/60 hover:bg-red-900 text-red-300 text-xs font-mono border border-red-800/60 transition-all flex items-center gap-1"
+            >
+              <span>🔒</span>
+              <span>Bloquejar</span>
             </button>
 
             <Link

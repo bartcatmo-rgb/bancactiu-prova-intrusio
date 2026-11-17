@@ -1,0 +1,33 @@
+RESTRICTED EDUCATIONAL AND CYBERSECURITY RESEARCH LICENSE
+Project: BancActiu 3.0 Prova Intrusió (Honeypot & Security Lab)
+Copyright (c) 2026 Marc Cachinero Baranda & Bartolomé Cachinero Baranda.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted solely for EDUCATIONAL, ACADEMIC, AND INTERNAL CYBERSECURITY TESTING PURPOSES,
+subject to the following mandatory conditions:
+
+1. NON-COMMERCIAL RESTRICTION:
+   This software, its source code, designs, and derivative works may NOT be sold,
+   resold, leased, rented, or in any way monetized, packaged, or exploited for
+   commercial or financial gain.
+
+2. EDUCATIONAL & CONTROLLED LAB USE ONLY:
+   This software is strictly intended as a honeypot mechanism and cybersecurity
+   lab environment for authorized security exercises, defensive training, and
+   educational demonstrations within controlled networks.
+
+3. NOTICE AND ATTRIBUTION:
+   All copies, reproductions, or substantial portions of the Software must retain
+   the above copyright notice, this list of conditions, and the disclaimer.
+
+4. NO PUBLIC REDISTRIBUTION WITHOUT AUTHORIZATION:
+   Public broadcasting, uploading to public commercial repositories, or unauthorized
+   distribution of proprietary components is strictly forbidden without prior written consent.
+
+DISCLAIMER:
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE.
