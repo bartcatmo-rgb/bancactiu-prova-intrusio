@@ -1,0 +1,317 @@
+[
+  {
+    "id": "AVV-LH-BELLVITGE",
+    "nomOficial": "Associació de Veïns de Bellvitge",
+    "nomCurt": "AVV Bellvitge",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "L'Hospitalet de Llobregat",
+    "comarca": "Barcelonès",
+    "codiPostal": "08907",
+    "regioSanitaria": "Barcelona Metropolitana Sud",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Sud",
+    "adrecaSeu": "Plaça de la Comunitat, 1, 08907 L'Hospitalet de Llobregat",
+    "telefonContacte": "933 35 12 40",
+    "emailContacte": "avvbellvitge@bancactiu.cat",
+    "responsableNom": "Rocío Morales Vidal",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-COR-STILDEFONS",
+    "nomOficial": "Associació de Veïns Sant Ildefons de Cornellà",
+    "nomCurt": "AVV Sant Ildefons",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Cornellà de Llobregat",
+    "comarca": "Baix Llobregat",
+    "codiPostal": "08940",
+    "regioSanitaria": "Barcelona Metropolitana Sud",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Sud",
+    "adrecaSeu": "Avinguda de Sant Ildefons, 24, 08940 Cornellà de Llobregat",
+    "telefonContacte": "933 77 45 10",
+    "emailContacte": "avvstildefons@bancactiu.cat",
+    "responsableNom": "Manel Domínguez Ruiz",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-LH-CANSERRA",
+    "nomOficial": "Associació de Veïns de Can Serra",
+    "nomCurt": "AVV Can Serra",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "L'Hospitalet de Llobregat",
+    "comarca": "Barcelonès",
+    "codiPostal": "08906",
+    "regioSanitaria": "Barcelona Metropolitana Sud",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Sud",
+    "adrecaSeu": "Carrer Castellbò, 18, 08906 L'Hospitalet de Llobregat",
+    "telefonContacte": "934 38 21 00",
+    "emailContacte": "avvcanserra@bancactiu.cat",
+    "responsableNom": "Marta Puigvert Pons",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": false
+    }
+  },
+  {
+    "id": "AVV-BCN-NOUBARRIS",
+    "nomOficial": "Associació de Veïns de Nou Barris - Prosperitat",
+    "nomCurt": "AVV Prosperitat",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Barcelona",
+    "comarca": "Barcelonès",
+    "codiPostal": "08016",
+    "regioSanitaria": "Barcelona Ciutat",
+    "gapicAssignada": "GAPiC Barcelona Ciutat",
+    "adrecaSeu": "Carrer Baltasar Gracián, 24, 08016 Barcelona",
+    "telefonContacte": "933 53 86 44",
+    "emailContacte": "avvprosperitat@bancactiu.cat",
+    "responsableNom": "Joan Martínez Solé",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-BCN-SANTS",
+    "nomOficial": "Associació de Veïns de Sants",
+    "nomCurt": "AVV Sants",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Barcelona",
+    "comarca": "Barcelonès",
+    "codiPostal": "08014",
+    "regioSanitaria": "Barcelona Ciutat",
+    "gapicAssignada": "GAPiC Barcelona Ciutat",
+    "adrecaSeu": "Carrer de Galileo, 28, 08014 Barcelona",
+    "telefonContacte": "933 39 88 12",
+    "emailContacte": "avvsants@bancactiu.cat",
+    "responsableNom": "Laia Garcia Rovira",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-BCN-POBLENOU",
+    "nomOficial": "Associació de Veïns del Poblenou",
+    "nomCurt": "AVV Poblenou",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Barcelona",
+    "comarca": "Barcelonès",
+    "codiPostal": "08005",
+    "regioSanitaria": "Barcelona Ciutat",
+    "gapicAssignada": "GAPiC Barcelona Ciutat",
+    "adrecaSeu": "Rambla del Poblenou, 49, 08005 Barcelona",
+    "telefonContacte": "932 21 00 11",
+    "emailContacte": "avvpoblenou@bancactiu.cat",
+    "responsableNom": "Sergi Riera Forn",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": false
+    }
+  },
+  {
+    "id": "AVV-BDN-LLEFIA",
+    "nomOficial": "Associació de Veïns Sant Antoni de Llefià",
+    "nomCurt": "AVV Llefià",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Badalona",
+    "comarca": "Barcelonès",
+    "codiPostal": "08913",
+    "regioSanitaria": "Barcelona Metropolitana Nord",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Nord",
+    "adrecaSeu": "Ronda de Sant Antoni de Llefià, 58, 08913 Badalona",
+    "telefonContacte": "933 87 23 45",
+    "emailContacte": "avvllefia@bancactiu.cat",
+    "responsableNom": "Carles Gómez Llopis",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-STACOLOMA-FONDO",
+    "nomOficial": "Associació de Veïns del Fondo",
+    "nomCurt": "AVV Fondo",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Santa Coloma de Gramenet",
+    "comarca": "Barcelonès",
+    "codiPostal": "08922",
+    "regioSanitaria": "Barcelona Metropolitana Nord",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Nord",
+    "adrecaSeu": "Carrer de Beethoven, 12, 08922 Santa Coloma de Gramenet",
+    "telefonContacte": "934 66 19 82",
+    "emailContacte": "avvfondo@bancactiu.cat",
+    "responsableNom": "Amina Benali / Ferran Bosch",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-SAB-CREUALTA",
+    "nomOficial": "Associació de Veïns de la Creu Alta",
+    "nomCurt": "AVV Creu Alta",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Sabadell",
+    "comarca": "Vallès Occidental",
+    "codiPostal": "08208",
+    "regioSanitaria": "Barcelona Metropolitana Nord",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Nord",
+    "adrecaSeu": "Carrer Major, 65, 08208 Sabadell",
+    "telefonContacte": "937 25 80 43",
+    "emailContacte": "avvcreualta@bancactiu.cat",
+    "responsableNom": "Mercè Valls Casals",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-TER-CANPARELLADA",
+    "nomOficial": "Associació de Veïns de Can Parellada",
+    "nomCurt": "AVV Can Parellada",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Terrassa",
+    "comarca": "Vallès Occidental",
+    "codiPostal": "08228",
+    "regioSanitaria": "Barcelona Metropolitana Nord",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Nord",
+    "adrecaSeu": "Carrer d'Europa, 8, 08228 Terrassa",
+    "telefonContacte": "937 86 11 02",
+    "emailContacte": "avvcanparellada@bancactiu.cat",
+    "responsableNom": "Jordi Soldevila Mas",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": false
+    }
+  },
+  {
+    "id": "AVV-MAT-CERDANYOLA",
+    "nomOficial": "Associació de Veïns Cerdanyola de Mataró",
+    "nomCurt": "AVV Cerdanyola Mataró",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Mataró",
+    "comarca": "Maresme",
+    "codiPostal": "08303",
+    "regioSanitaria": "Barcelona Metropolitana Nord",
+    "gapicAssignada": "GAPiC Barcelona Metropolitana Nord",
+    "adrecaSeu": "Avinguda Gatassa, 10, 08303 Mataró",
+    "telefonContacte": "937 98 44 20",
+    "emailContacte": "avvcerdanyolamataro@bancactiu.cat",
+    "responsableNom": "Antoni López Sala",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-GIR-SANTNARCIS",
+    "nomOficial": "Associació de Veïns de Sant Narcís",
+    "nomCurt": "AVV Sant Narcís Girona",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Girona",
+    "comarca": "Gironès",
+    "codiPostal": "17005",
+    "regioSanitaria": "Girona",
+    "gapicAssignada": "GAPiC Girona",
+    "adrecaSeu": "Plaça de l'Assumpció, 27, 17005 Girona",
+    "telefonContacte": "972 23 54 81",
+    "emailContacte": "avvsantnarcis@bancactiu.cat",
+    "responsableNom": "Montserrat Trias Oliver",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-TGN-BONAVISTA",
+    "nomOficial": "Associació de Veïns de Bonavista",
+    "nomCurt": "AVV Bonavista Tarragona",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Tarragona",
+    "comarca": "Tarragonès",
+    "codiPostal": "43100",
+    "regioSanitaria": "Camp de Tarragona",
+    "gapicAssignada": "GAPiC Camp de Tarragona",
+    "adrecaSeu": "Carrer Vint, s/n (Edifici Municipal), 43100 Tarragona",
+    "telefonContacte": "977 54 22 19",
+    "emailContacte": "avvbonavista@bancactiu.cat",
+    "responsableNom": "Dolors Piquer Fortuny",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-LLE-BORDETA",
+    "nomOficial": "Associació de Veïns de la Bordeta",
+    "nomCurt": "AVV La Bordeta Lleida",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Lleida",
+    "comarca": "Segrià",
+    "codiPostal": "25001",
+    "regioSanitaria": "Lleida",
+    "gapicAssignada": "GAPiC Lleida",
+    "adrecaSeu": "Carrer d'Àger, 8, 25001 Lleida",
+    "telefonContacte": "973 20 18 90",
+    "emailContacte": "avvlabordetalleida@bancactiu.cat",
+    "responsableNom": "Francesc Xavier Balcells",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": true
+    }
+  },
+  {
+    "id": "AVV-MAN-BALCONADA",
+    "nomOficial": "Associació de Veïns de la Balconada",
+    "nomCurt": "AVV La Balconada Manresa",
+    "tipus": "ASSOCIACIO_VEINS",
+    "municipi": "Manresa",
+    "comarca": "Bages",
+    "codiPostal": "08243",
+    "regioSanitaria": "Catalunya Central",
+    "gapicAssignada": "GAPiC Catalunya Central",
+    "adrecaSeu": "Passeig del Riu, 48, 08243 Manresa",
+    "telefonContacte": "938 74 35 12",
+    "emailContacte": "avvbalconadamanresa@bancactiu.cat",
+    "responsableNom": "Jaume Vilardell Prat",
+    "estatConveni": "DISPONIBLE_PER_ALTA",
+    "serveisDisponibles": {
+      "bancMaterialOrtoprotesic": true,
+      "suportComunitari": true,
+      "recollidaDonacions": false
+    }
+  }
+]

@@ -1,0 +1,403 @@
+{
+  "metadades": {
+    "versio": "3.0.0 Enterprise",
+    "entorn": "Governança & Auditoria Institucional BancActiu Nexus",
+    "estat": "AUDIT_SUCCESS_100%",
+    "dataAuditoria": "2026-11-16T16:15:33.710Z",
+    "estandarSeguretat": "ENS Nivell Alt / Zero-Trust Architecture / RGPD Art. 32"
+  },
+  "resumExecutiu": {
+    "totalNivellsArbre": 12,
+    "nivellsVerificats100": 12,
+    "nivellsAmbAvisos": 0,
+    "nivellsFallits": 0,
+    "percentatgeCobertura": "100.0%",
+    "superadministradorsVerificats": [
+      "Bartolomé Cachinero Baranda (DNI: 48956602Z)",
+      "Marc Cachinero Baranda (DNI: 48956602Z)"
+    ],
+    "modulServeisSocialsPresent": true
+  },
+  "arbreOrganitzacional": [
+    {
+      "nivell": 1,
+      "nom": "Superadministradors de Plataforma",
+      "rol": "SUPERADMIN",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Bartolomé Cachinero Baranda",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Marc Cachinero Baranda",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Bartolomé Cachinero Baranda",
+          "status": "PRESENT"
+        },
+        {
+          "membre": "Marc Cachinero Baranda",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 2,
+      "nom": "Gerències Territorials i GAPICs",
+      "rol": "DIRECCIO / SUPERADMIN",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Mireia Valls",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Dr. Carles Font",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Mireia Valls",
+          "status": "PRESENT"
+        },
+        {
+          "membre": "Dr. Carles Font",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 3,
+      "nom": "Direcció de CAP (Centres d'Atenció Primària)",
+      "rol": "DIRECCIO",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Dra. Eulàlia Rovira",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Dra. Eulàlia Rovira",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 4,
+      "nom": "Referents de CAP (Comunitaris i Mèdics)",
+      "rol": "TECNIC_SALUT",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Dr. Jaume Gutiérrez",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Dr. Jaume Gutiérrez",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 5,
+      "nom": "Treballadors de CAP (Administratius Sanitaris UAC)",
+      "rol": "ADMINISTRATIU_OPERATIU",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Laura Esteve",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Laura Esteve",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 6,
+      "nom": "Gerents d'Entitats Veïnals",
+      "rol": "DIRECCIO",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Manel Gómez",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Manel Gómez",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 7,
+      "nom": "Voluntaris d'Entitats Veïnals",
+      "rol": "VOLUNTARI",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Rosa Maria Martínez",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Rosa Maria Martínez",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 8,
+      "nom": "Gerència de Taller de Reparació (Creu Roja)",
+      "rol": "TERCER_SECTOR",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Carles Miralles",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Carles Miralles",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 9,
+      "nom": "Treballadors i Mecànics de Taller (Creu Roja)",
+      "rol": "TERCER_SECTOR",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Albert Puig",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Albert Puig",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 10,
+      "nom": "Gerència de Serveis Socials Municipals",
+      "rol": "SERVEIS_SOCIALS",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Mercè Dalmau",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Mercè Dalmau",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 11,
+      "nom": "Treballadors Socials de Dependència",
+      "rol": "SERVEIS_SOCIALS",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Núria Soler",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Núria Soler",
+          "status": "PRESENT"
+        }
+      ]
+    },
+    {
+      "nivell": 12,
+      "nom": "Administració Local / Ajuntament",
+      "rol": "AJUNTAMENT",
+      "status": "VERIFIED_100%",
+      "checks": [
+        {
+          "check": "Rol definit a AppRole",
+          "status": "OK"
+        },
+        {
+          "check": "Membre Jordi Casals",
+          "status": "OK"
+        }
+      ],
+      "membresDetectats": [
+        {
+          "membre": "Jordi Casals",
+          "status": "PRESENT"
+        }
+      ]
+    }
+  ],
+  "politiquesRbacZeroTrust": [
+    {
+      "rol": "SUPERADMIN",
+      "ambit": "Global Ecosistema (Tots els centres, gerències i mòduls)",
+      "zeroTrustLevel": "ENS Nivell Alt (2FA obligat per a accions crítiques)",
+      "privilegis": [
+        "Auditoria Forense Immutable",
+        "Simulacions d'Estrès 5 Anys",
+        "Onboarding de Centres",
+        "Exportació RGPD Protegida",
+        "Gestió RBAC"
+      ]
+    },
+    {
+      "rol": "DIRECCIO",
+      "ambit": "Centre / Gerència / Barri Assignat",
+      "zeroTrustLevel": "ENS Nivell Alt (Accés a mètriques operatives i autoritzacions)",
+      "privilegis": [
+        "Aprovació de Convenis",
+        "Visualització de quadre de comandament del centre",
+        "Supervisió d'equips"
+      ]
+    },
+    {
+      "rol": "TECNIC_SALUT",
+      "ambit": "Àmbit Clínic Primari (CAP)",
+      "zeroTrustLevel": "ENS Nivell Mitjà-Alt (Validació sanitària de Barthel i diagnòstic)",
+      "privilegis": [
+        "Prescripció d'Ajudes Tècniques",
+        "Validació Mèdica d'Ortopèdia",
+        "Consulta d'historial de préstecs sanitaris"
+      ]
+    },
+    {
+      "rol": "ADMINISTRATIU_OPERATIU",
+      "ambit": "UAC (Atenció a l'Usuari de CAP)",
+      "zeroTrustLevel": "ENS Nivell Mitjà (Traçabilitat ciutadana RGPD)",
+      "privilegis": [
+        "Alta de Sol·licituds Ciutadanes",
+        "Lliurament de material",
+        "Signatura biomètrica / electrònica de rebuts"
+      ]
+    },
+    {
+      "rol": "TERCER_SECTOR",
+      "ambit": "Tallers de Creu Roja / Entitats Socials Homologades",
+      "zeroTrustLevel": "ENS Nivell Mitjà (Control d'inventari tècnic i recondicionament)",
+      "privilegis": [
+        "Gestió de cicle d'avaries",
+        "Calibratge i desinfecció",
+        "Certificació d'idoneïtat de material ortopèdic"
+      ]
+    },
+    {
+      "rol": "SERVEIS_SOCIALS",
+      "ambit": "Àrea Bàsica de Serveis Socials (ABSS)",
+      "zeroTrustLevel": "ENS Nivell Alt (Dades especialment protegides de dependència i vulnerabilitat)",
+      "privilegis": [
+        "Expedients BVD (64 punts)",
+        "Assignació SAD i Teleassistència",
+        "Pla Individualitzat d'Atenció (PIA)",
+        "Ajudes d'espècie"
+      ]
+    },
+    {
+      "rol": "VOLUNTARI",
+      "ambit": "Barri i Xarxa Veïnal de Suport",
+      "zeroTrustLevel": "Zero-Trust Mínim Privilegi (Sense accés a dades clíniques privades)",
+      "privilegis": [
+        "Peticions d'acompanyament",
+        "Banc del Temps veïnal",
+        "Suport a la mobilitat de proximitat"
+      ]
+    },
+    {
+      "rol": "AJUNTAMENT",
+      "ambit": "Municipi i Benestar Social",
+      "zeroTrustLevel": "ENS Nivell Mitjà (Supervisió institucional de programes municipals)",
+      "privilegis": [
+        "Coordinació interdepartamental",
+        "Assignació de subvencions i espais",
+        "Estadístiques de cobertura social"
+      ]
+    }
+  ],
+  "coberturaWorkspaces": {
+    "totalFitxers": 10,
+    "fitxers": [
+      "BancActiuSocialWorkspace.tsx",
+      "GerenciaOnboardingWorkspace.tsx",
+      "SocialServicesWorkspace.tsx",
+      "SuperAdminAiAgentWorkspace.tsx",
+      "SuperAdminInteroperabilityWorkspace.tsx",
+      "SuperAdminRolesAndServicesWorkspace.tsx",
+      "SuperAdminSimulationsAndAuditWorkspace.tsx",
+      "SuperAdminStressAndSecurityLabWorkspace.tsx",
+      "ToastNotification.tsx",
+      "WorkshopAndRepairsWorkspace.tsx"
+    ]
+  }
+}

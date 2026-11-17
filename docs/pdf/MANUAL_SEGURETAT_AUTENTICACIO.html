@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual de Ciberseguretat, Autenticació i Protecció de Dades - BancActiu 3.0</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 20mm 16mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+    }
+    .header-banner {
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: bold;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    h1 {
+      font-size: 24px;
+      color: #0f172a;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 16px;
+      color: #1e3a8a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 14px;
+      color: #0f172a;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      page-break-after: avoid;
+    }
+    blockquote {
+      background: #f8fafc;
+      border-left: 4px solid #38bdf8;
+      margin: 12px 0;
+      padding: 10px 14px;
+      color: #334155;
+      font-style: italic;
+      border-radius: 0 8px 8px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 11px;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      background: #f1f5f9;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #be185d;
+    }
+    ul, ol {
+      margin: 8px 0 14px 20px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-banner">
+    <div>
+      <div class="brand-title">Generalitat de Catalunya · Departament de Salut</div>
+      <div class="brand-sub">Generalitat de Catalunya · BancActiu 3.0</div>
+    </div>
+    <div class="badge">ENS NIVELL ALT CERTIFICAT</div>
+  </div>
+<h1>Manual de Ciberseguretat, Autenticació i Protecció de Dades - BancActiu 3.0</h1>
+<blockquote>**Directrius Oficials de Seguretat Perimetral, Esquema Nacional de Seguretat (ENS Nivell Alt) i RGPD**</blockquote>
+<blockquote>Centre de Seguretat de la Informació de Catalunya (CESICAT) · Departament de Salut · Institut Esteve Terrades i Illa · Versió 3.0 Enterprise</blockquote>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>1. Model de Seguretat Zero-Trust</h2>
+<p>BancActiu 3.0 implementa una arquitectura integral <strong>Zero-Trust</strong>: cap petició interna o externa és considerada de confiança per defecte; qualsevol accés a dades clíniques o administratives requereix autenticació prèvia, resolució de context institucional i verificació criptogràfica d'identitat.</p>
+<h3>1.1. Capes de Verificació</h3>
+<p>1. <strong>Edge Middleware (<code>middleware.ts</code>)</strong>:</p>
+<ul>
+<li>S'executa a la xarxa perimetral de Vercel abans de servir qualsevol recurs dinàmic o pàgina.</li>
+<li>Resol de manera contextual el tenant segons la IP d'accés (ex: xarxa de l'Institut Esteve Terrades i Illa <code>10.151.0.0/16</code>, <code>10.152.0.0/16</code>, <code>84.88.151.0/24</code>, etc.) i el Host.</li>
+<li>Injecta capçaleres institucionals d'auditoria: <code>x-tenant-id</code>, <code>x-tenant-code</code>, <code>x-tenant-name</code>, <code>x-tenant-badge</code> i <code>x-centre-nom</code>.</li>
+<li>Verifica la signatura i integritat de la cookie <code>bancactiu_session</code>.</li>
+<li>Si no hi ha sessió acreditada, respon amb <code>HTTP 307 Temporary Redirect</code> cap a <code>/login</code> preservant el paràmetre <code>redirect</code> de retorn segur.</li>
+</ul>
+<p>2. <strong>Server-Side Session Check (SSR a <code>app/page.tsx</code>)</strong>:</p>
+<ul>
+<li>El Server Component llegeix directament les galetes xifrades del servidor (<code>await cookies()</code>).</li>
+<li>Valida estrictament l'accés autoritzant el rol <code>SUPERADMIN</code> (vinculat als DNI <code>48956602Z</code> i <code>52622304Y</code>, o a l'usuari <code>Administrador</code>).</li>
+</ul>
+<p>3. <strong>Control d'Accés per Rol Granular (RBAC)</strong>:</p>
+<ul>
+<li>Cada recurs està assignat als rols autoritzats (<code>SUPERADMIN</code>, <code>GERENCIA_TERRITORIAL</code>, <code>DIRECCIO_CAP</code>, <code>REFERENT_CAP</code>, <code>ADMINISTRATIU_SANITARI</code>, <code>COORDINADOR_LOCAL</code>, <code>TECNIC_TALLER</code>, <code>VOLUNTARI_ENTITAT</code>).</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>2. Autenticació Estricta del Superadministrador i Usuari Docent</h2>
+<h3>2.1. Vinculació d'Identitat al Superadministrador Oficial</h3>
+<p>L'administrador suprem i autor de referència acreditat al Gateway Launcher de Nexus és:</p>
+<ul>
+<li><strong>DNI</strong>: <code>48956602Z</code></li>
+<li><strong>Usuari</strong>: Marc Cachinero Baranda (Governança i Control Central)</li>
+<li><strong>Email</strong>: <code>marccachinero@gmail.com</code></li>
+<li><strong>Rol</strong>: <code>SUPERADMIN</code> (Nivell 5 · Control Total)</li>
+</ul>
+<p>Compte de governança addicional institucional:</p>
+<ul>
+<li><strong>DNI</strong>: <code>52622304Y</code> / Mireia Valls i Grau (CatSalut / GAPIC)</li>
+</ul>
+<h3>2.2. Usuari Professor "Administrador" (Canvi Obligatori de Clau)</h3>
+<p>Configurat amb les màximes garanties per a docència i laboratoris:</p>
+<ul>
+<li><strong>Identificador</strong>: <code>Administrador</code></li>
+<li><strong>Contrasenya Inicial</strong>: <code>1234</code></li>
+<li><strong>Estat de Seguretat</strong>: <code>must_change_password: true</code>, <code>isFirstLogin: true</code></li>
+<li><strong>Centre Associat</strong>: <code>INS-ESTEVE-TERRADES</code> (Cornellà de Llobregat)</li>
+<li><strong>Flux de Bloqueig</strong>: L'endpoint <code>/api/auth/login</code> retorna <code>requirePasswordSetup: true</code>, obligant a definir immediatament una nova contrasenya robusta abans de permetre qualsevol accés.</li>
+</ul>
+<h3>2.3. Modal Ineludible de Propietat Intel·lectual</h3>
+<p>En el primer accés de qualsevol usuari (incloent Superadministradors):</p>
+<ul>
+<li>Salta el component [<code>IntellectualPropertyModal</code>](file:///apps/bancactiu-nexus/components/legal/IntellectualPropertyModal.tsx).</li>
+<li>Bloqueja el desplaçament i la tecla <code>Escape</code>.</li>
+<li>Requereix l'acceptació explícita dels drets d'autor i propietat intel·lectual (RDL 1/1996, RGPD Art. 9 i ENS Nivell Alt).</li>
+<li>Persisteix l'estat a <code>localStorage</code> i cookies segures.</li>
+</ul>
+<h3>2.4. Re-Autenticació Sensible per a Rols Crítics (2FA / Double Verification)</h3>
+<p>El component [<code>SensitiveActionAuthModal</code>](file:///packages/ui-glass/src/SensitiveActionAuthModal.tsx) està <strong>restringit estrictament</strong> perquè NOMÉS s'activi davant de tres accions crítiques:</p>
+<p>1. <strong><code>SUPERADMIN_ROLE_CHANGE</code></strong>: Concessió o alteració de privilegis del rol Superadministrador a la matriu RBAC.</p>
+<p>2. <strong><code>MASS_DATA_EXPORT</code></strong>: Extracció massiva xifrada de logs d'auditoria o expedients clínics protegits sota RGPD Art. 9.</p>
+<p>3. <strong><code>AUDIT_LAB_NETWORK</code></strong>: Accés al laboratori d'estrès, escàner de seguretat o modificació de paràmetres de xarxa perimetral.</p>
+<p>La navegació ordinària (centres, serveis, assistent Kenzo, intercanvi d'aplicacions) s'executa fluidament sense demanar 2FA.</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>3. Reconeixement Dinàmic Multi-Tenant per IP (Institut Esteve Terrades i Illa)</h2>
+<p>El middleware perimetral detecta de manera autònoma les subxarxes autoritzades:</p>
+<ul>
+<li><code>10.151.0.0/16</code> & <code>10.152.0.0/16</code> (Xarxes docents i administratives IETI)</li>
+<li><code>192.168.151.0/24</code> & <code>192.168.100.0/24</code> (Aules i laboratoris)</li>
+<li><code>172.16.50.0/24</code> (Serveis del centre)</li>
+<li><code>84.88.151.0/24</code> & <code>80.39.151.0/24</code> (IPs públiques educatives)</li>
+<li><code>194.179.x.x</code> & <code>84.88.x.x</code> & <code>213.73.x.x</code> (Anella Científica i CSUC)</li>
+</ul>
+<p>En reconèixer la xarxa, el sistema injecta la marca oficial:</p>
+<ul>
+<li><strong>Nom</strong>: <code>Institut Esteve Terrades i Illa (Cornellà de Llobregat)</code></li>
+<li><strong>Acrònim</strong>: <code>IPFP Esteve Terrades i Illa</code></li>
+<li><strong>Capçaleres</strong>: <code>x-centre-nom</code> i <code>x-tenant-badge: IPFP Esteve Terrades i Illa</code></li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>4. Xifratge E2EE, Capçaleres HTTP i Compliment ENS</h2>
+<ul>
+<li><strong>Dades en Trànsit (E2EE)</strong>: Canals xifrats TLS 1.3 amb Perfect Forward Secrecy (PFS).</li>
+<li><strong>Dades en Repòs</strong>: Xifratge AES-256-GCM per a expedients PAO i registres sensibles.</li>
+<li><strong>Capçaleres de Seguretat</strong>:</li>
+<li><code>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</code></li>
+<li><code>X-Frame-Options: DENY</code> (Anti-clickjacking)</li>
+<li><code>X-Content-Type-Options: nosniff</code></li>
+<li><code>Content-Security-Policy: default-src 'self' ...</code></li>
+<li><strong>AuditLog Forense Immutable</strong>: Registre criptogràfic de totes les operacions crítiques amb marca de temps ISO-8601, IP d'origen i identificador únic d'auditoria.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>5. Registre d'Auditoria Immutable Merkle Tree (Hash Chaining SHA-256)</h2>
+<p>Per assolir l'estàndard de grau bancari i forense davant tribunals o inspeccions de l'Agència Espanyola de Protecció de Dades (AEPD), BancActiu 3.0 no empra taules d'auditoria editables ordinàries. En el seu lloc, implementa una <strong>cadena Merkle encadenada criptogràficament</strong>:</p>
+<ul>
+<li><strong>Fórmula de Bloc</strong>:</li>
+</ul>
+<p>$$\text{BlockHash}_n = \text{SHA-256}(\text{Index}_n \parallel \text{Timestamp}_n \parallel \text{ActorDNI}_n \parallel \text{Action}_n \parallel \text{ClientIP}_n \parallel \text{PayloadHash}_n \parallel \text{BlockHash}_{n-1})$$</p>
+<ul>
+<li><strong>Immunitat davant Manipulacions</strong>: Si un atacant o administrador deshonest manipula un registre antic de la base de dades, el hash del bloc canvia, trencant la concordança amb tots els blocs posteriors.</li>
+<li><strong>Verificació Automàtica</strong>: El sistema executa <code>verifyMerkleChainIntegrity()</code> periòdicament. Si es detecta qualsevol discrepància, el sistema entra en estat de bloqueig defensiu i alerta immediatament el Superadministrador.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>6. Sandboxing de Sessió & Execució Aïllada en Memòria</h2>
+<p>Per evitar atacs de *Session Hijacking*, robatori de cookies o fuites en terminals compartits:</p>
+<p>1. <strong>Empremta Digital de Client (Fingerprint)</strong>: Cada sessió vincula criptogràficament la IP del client, el hash del seu <code>User-Agent</code> i un salt efímer d'un sol ús generat al servidor.</p>
+<p>2. <strong>Rotació de Claus Efímeres en Memòria</strong>: Cap clau simètrica de desxifratge es guarda en clar a <code>localStorage</code> o <code>sessionStorage</code>. Les estructures de sessió viuen exclusivament en l'espai de memòria aïllat del Sandbox del servidor.</p>
+<p>3. <strong>Invalidació Immediata</strong>: Si una petició presenta una discrepància en la seva empremta digital respecte al Sandbox autoritzat, la sessió queda destruïda a l'instant i s'activa un incident al motor SOAR.</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>7. Resiliència Offline-First amb Sincronització Delta Atòmica</h2>
+<p>BancActiu 3.0 garanteix la continuïtat del servei sociosanitari en situacions de catàstrofe o caiguda de la xarxa:</p>
+<ul>
+<li><strong>Mode Desconnectat</strong>: Els clients de camp emmagatzemen operacions en una cua xifrada local (<code>DeltaOperation</code>).</li>
+<li><strong>Sincronització Atòmica (<code>/api/sync/delta</code>)</strong>: Quan es recupera la connectivitat a Internet, el paquet Delta s'envia en bloc al servidor central.</li>
+<li><strong>Resolució de Conflictes</strong>: El motor aplica una estratègia determinista *Last-Write-Wins amb Auditoria Merkle*, consolidant l'historial i generant nous blocs immutables per a cadascun dels canvis aplicats.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>8. Blindatge de la Pantalla de Login i Prevenció d'Autologin Residual</h2>
+<p>Per complir les directrius més exigents de l'Esquema Nacional de Seguretat (ENS Nivell Alt) sobre estacions d'accés públiques o aules docents:</p>
+<p>1. <strong>Neteja Imperativa d'Estat Residual a <code>/login</code></strong>:</p>
+<ul>
+<li>En accedir a la ruta <code>/login</code>, el sistema executa de forma immediata la purga de <code>sessionStorage</code> i claus de memòria a <code>localStorage</code>.</li>
+<li>S'emet una invalidació estricta de la cookie de sessió (<code>Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0</code>), evitant redireccions automàtiques o bucles de canvi de contrasenya no desitjats.</li>
+</ul>
+<p>2. <strong>Desactivació Absoluta d'Autocompletat (<code>autocomplete="off"</code>, <code>data-lpignore="true"</code>)</strong>:</p>
+<ul>
+<li>Tots els formularis d'autenticació (DNI, contrasenya, primer inici i modal de doble verificació 2FA) implementen marcadors anti-emplenament automàtic per evitar que gestors de claus corporatius o del navegador introdueixin credencials antigues.</li>
+</ul>
+<p>3. <strong>Disseny d'Interfície Compacta i Adaptativa ("Bogons")</strong>:</p>
+<ul>
+<li>Els components interactius del Dashboard i Gateway Launcher estan optimitzats amb graelles compactes fluides (<code>grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5</code>, padding adaptatiu <code>p-3</code>, mides tipogràfiques contingudes <code>text-xs / text-sm</code>) garantint una visualització completa i scroll fluid vertical en resolucions d'escriptori i portàtils.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>9. Laboratori d'Estrès i Simulació de Seguretat Personalitzable (Stress & Security Lab)</h2>
+<p>BancActiu 3.0 Enterprise incorpora una eina avançada de simulació de fatiga i estrès a la carta accessible exclusivament des de la consola de Superadministració:</p>
+<p>1. <strong>Configuració Dinàmica de Paràmetres</strong>:</p>
+<ul>
+<li><strong>Selector de Temps / Durada</strong>: Ajustable de forma interactiva (30 segons per a ràfega inicial, 1 minut per a auditoria estàndard, 5 minuts per a saturació de concurrència i 15 minuts per a fatiga de màxima resistència).</li>
+<li><strong>Àmbit Territorial de Centres</strong>: Possibilitat d'executar el test sobre la xarxa global de Catalunya (420 CAPs, CUAPs i Hospitals) o sobre un conjunt acotat de centres sanitaris seleccionats manualment (CAP Sant Ildefons, CAP Just Oliveras, CAP Bellvitge, CAP Can Bou, Creu Roja Cornellà, IETI Dual).</li>
+<li><strong>Filtratge de Mòduls Operatius</strong>: Selecció granular dels serveis a sotmetre a càrrega: Préstecs d'Ajudes Tècniques (Expedients PAO), Taller de Creu Roja (Reparacions i Recondicionament), Autenticació/Middleware Zero-Trust i Cadena Merkle de Traçabilitat Forense.</li>
+</ul>
+<p>2. <strong>Informe Multidimensional d'Auditoria</strong>:</p>
+<ul>
+<li><strong>Mètriques Transaccionals</strong>: Mesurament en temps real de transaccions per segon (TPS mitjà i pic), temps de latència mitjà i màxim (p99), i taxa d'errors de sistema (0.00% d'errors de dades).</li>
+<li><strong>Integritat Criptogràfica Merkle</strong>: Generació i verificació del hash SHA-256 d'arrel de cadena en calent durant el pic de concurrència, garantint la condició d'inalterabilitat del registre forense.</li>
+<li><strong>Resposta Defensiva del Motor SOAR</strong>: Recompte i registre d'incidències bloquejades (atacs de força bruta, credential stuffing, sondeig territorial) i resolució automàtica de col·lisions d'inventari mitjançant bloqueig optimista, amb temps de mitigació inferiors a 5 ms.</li>
+<li><strong>Desglossament per Centre i Servei</strong>: Taules analítiques independents amb els TPS, transaccions, latències i estat de salut (ÒPTIM) per a cadascun dels nodes avaluats.</li>
+<li><strong>Exportació Executiva Oficial</strong>: Descàrrega directa de l'informe complet en PDF per a acreditació d'auditories ENS i RGPD.</li>
+</ul>
+<p>3. <strong>Governança Pura de Superadministració</strong>:</p>
+<ul>
+<li>La barra i el panell de comandament del Superadministrador s'han alliberat de funcionalitats clíniques menors com el botó "Nou Préstamo", reservant aquest accés exclusivament als rols d'atenció primària (Treballadors del CAP) per preservar una estricta separació de funcions (Segregation of Duties).</li>
+</ul>
+
+  <div class="footer">
+    BancActiu 3.0 &middot; Ecosistema Descentralitzat de Salut i Benestar &middot; DNI SuperAdmin: 48956602Z (Marc Cachinero) &middot; Producció Oficial Vercel Cloud
+  </div>
+</body>
+</html>

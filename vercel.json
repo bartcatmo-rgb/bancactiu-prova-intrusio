@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npm --prefix apps/bancactiu-nexus run build",
+  "outputDirectory": "apps/bancactiu-nexus/.next"
+}

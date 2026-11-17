@@ -1,0 +1,28 @@
+{
+  "name": "bancactiu-prova-intrusio",
+  "version": "3.0.0",
+  "private": true,
+  "description": "BancActiu 3.0 Prova Intrusió - Honeypot Shield & Security Penetration Test Clone",
+  "workspaces": [
+    "packages/*",
+    "apps/bancactiu-nexus",
+    "apps/bancactiu-salut",
+    "apps/bancactiu-municipal",
+    "apps/bancactiu-social",
+    "apps/bancactiu-operatiu"
+  ],
+  "scripts": {
+    "build": "npm --prefix apps/bancactiu-nexus run build",
+    "build:all": "npm run build --workspaces --if-present",
+    "build:nexus": "npm --prefix apps/bancactiu-nexus run build",
+    "build:salut": "npm --prefix apps/bancactiu-salut run build",
+    "build:municipal": "npm --prefix apps/bancactiu-municipal run build",
+    "build:social": "npm --prefix apps/bancactiu-social run build",
+    "build:operatiu": "npm --prefix apps/bancactiu-operatiu run build",
+    "dev:nexus": "npm --prefix apps/bancactiu-nexus run dev",
+    "dev:salut": "npm --prefix apps/bancactiu-salut run dev",
+    "dev:municipal": "npm --prefix apps/bancactiu-municipal run dev",
+    "dev:social": "npm --prefix apps/bancactiu-social run dev",
+    "dev:operatiu": "npm --prefix apps/bancactiu-operatiu run dev"
+  }
+}

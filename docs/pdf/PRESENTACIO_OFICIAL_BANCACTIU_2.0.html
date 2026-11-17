@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Dossier de Presentació Oficial - BancActiu 3.0 Enterprise</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 20mm 16mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+    }
+    .header-banner {
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: bold;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    h1 {
+      font-size: 24px;
+      color: #0f172a;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 16px;
+      color: #1e3a8a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 14px;
+      color: #0f172a;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      page-break-after: avoid;
+    }
+    blockquote {
+      background: #f8fafc;
+      border-left: 4px solid #38bdf8;
+      margin: 12px 0;
+      padding: 10px 14px;
+      color: #334155;
+      font-style: italic;
+      border-radius: 0 8px 8px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 11px;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      background: #f1f5f9;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #be185d;
+    }
+    ul, ol {
+      margin: 8px 0 14px 20px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-banner">
+    <div>
+      <div class="brand-title">Generalitat de Catalunya · Departament de Salut</div>
+      <div class="brand-sub">Generalitat de Catalunya · BancActiu 3.0</div>
+    </div>
+    <div class="badge">ENS NIVELL ALT CERTIFICAT</div>
+  </div>
+<h1>Dossier de Presentació Oficial: BancActiu 2.0 Enterprise</h1>
+<blockquote>**Plataforma Integral de Gestió d'Ajudes Tècniques, Suport a la Dependència i Ciberseguretat Hospitalària**</blockquote>
+<blockquote>Presentació Institucional davant la Generalitat de Catalunya · Departament de Salut · Ajuntament de Cornellà · Creu Roja</blockquote>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>Índex de Diapositives Executives</h2>
+<p>1. [Diapositiva 1: Portada i Visió Estratègica](#diapositiva-1-portada-i-visió-estratègica)</p>
+<p>2. [Diapositiva 2: El Repte de l'Accessibilitat i la Dependència a Catalunya](#diapositiva-2-el-repte-de-laccessibilitat-i-la-dependència-a-catalunya)</p>
+<p>3. [Diapositiva 3: Arquitectura Modular Descentralitzada (5 Micro-Aplicacions)](#diapositiva-3-arquitectura-modular-descentralitzada-5-micro-aplicacions)</p>
+<p>4. [Diapositiva 4: Base de Dades Compartida i Traçabilitat Forense (@bancactiu/db)](#diapositiva-4-base-de-dades-compartida-i-traçabilitat-forense-bancactiudb)</p>
+<p>5. [Diapositiva 5: Blindatge de Seguretat Zero-Trust i Compliment ENS Nivell Alt](#diapositiva-5-blindatge-de-seguretat-zero-trust-i-compliment-ens-nivell-alt)</p>
+<p>6. [Diapositiva 6: Mòdul Salut (Prescripció Mèdica i Escala Barthel a CAPs)](#diapositiva-6-mòdul-salut-prescripció-mèdica-i-escala-barthel-a-caps)</p>
+<p>7. [Diapositiva 7: Mòdul Municipal (Ajuntament de Cornellà, Padró i SAD)](#diapositiva-7-mòdul-municipal-ajuntament-de-cornellà-padró-i-sad)</p>
+<p>8. [Diapositiva 8: Mòdul Social & Operatiu (Creu Roja, Llei 39/2006 i Magatzem)](#diapositiva-8-mòdul-social--operatiu-creu-roja-llei-392006-i-magatzem)</p>
+<p>9. [Diapositiva 9: Assistent Intel·ligent Kenzo / Kenza / Kenz Core & Simulació](#diapositiva-9-assistent-intel·ligent-kenzo--kenza--kenz-core--simulació)</p>
+<p>10. [Diapositiva 10: Full de Ruta, Pasarel·les AOC i Model d'Homologació 2026](#diapositiva-10-full-de-ruta-pasarel·les-aoc-i-model-dhomologació-2026)</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 1: Portada i Visió Estratègica</h3>
+<ul>
+<li><strong>Títol</strong>: BancActiu 2.0: Ecosistema Descentralitzat de Salut i Benestar</li>
+<li><strong>Subtítol</strong>: Transformació digital de la prescripció, recuperació i préstec comunitari d'ajudes tècniques a Catalunya</li>
+<li><strong>Emissors</strong>: Departament de Salut &middot; CatSalut &middot; Gerència Metropolitana Sud &middot; Ajuntament de Cornellà &middot; Creu Roja</li>
+<li><strong>Punts Clau</strong>:</li>
+<li>Superació del model fragmentat tradicional.</li>
+<li>Connexió directa entre atenció primària (CAPs), serveis socials municipals i voluntariat.</li>
+<li>Traçabilitat biomètrica i documental integral de cada recurs mèdic (cadires de rodes, llits articulats, caminadors).</li>
+<li><strong>Notes de l'Orador</strong>: *"BancActiu 2.0 no és només un programa informàtic, sinó un nou model de governança col·laborativa pública i comunitària que garanteix que cap ciutadà en situació de dependència es quedi sense recurs per motius burocràtics."*</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 2: El Repte de l'Accessibilitat i la Dependència a Catalunya</h3>
+<ul>
+<li><strong>Dades Demogràfiques</strong>:</li>
+<li>Més d'un 19% de la població de Catalunya supera els 65 anys; a l'Àrea Metropolitana el creixement d'octogenaris és exponencial.</li>
+<li>Termini mitjà històric d'obtenció d'una ajuda tècnica per via ordinària: 4 a 9 mesos.</li>
+<li>BancActiu 2.0 redueix aquest temps a <strong>menys de 48 hores</strong> en casos d'urgència residencial o alta hospitalària post-ictus.</li>
+<li><strong>Impacte Econòmic i Ambiental</strong>:</li>
+<li>Model d'economia circular: Taxa de reutilització d'ajudes tècniques assolida del <strong>94.2%</strong>.</li>
+<li>Estalvi estimat per gerència sanitària: més de 420.000 € anuals en compres no recurrents.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 3: Arquitectura Modular Descentralitzada (5 Micro-Aplicacions)</h3>
+<ul>
+<li><strong>Estructura Monorepo 2.0</strong>:</li>
+</ul>
+<p>1. <strong>BancActiu Nexus (Port 3000 / <code>/</code>)</strong>: Gateway Launcher, Superadministració arrel (DNI <code>52622304Y</code>), Kenzo AI i auditoria.</p>
+<p>2. <strong>BancActiu Salut (Port 3001 / <code>/salut</code>)</strong>: Validació mèdica per a facultatius de CAPs i hospitals, escala Barthel.</p>
+<p>3. <strong>BancActiu Municipal (Port 3002 / <code>/municipal</code>)</strong>: Gestió d'accessibilitat municipal, subvencions i padró a Cornellà.</p>
+<p>4. <strong>BancActiu Social (Port 3003 / <code>/social</code>)</strong>: Llei de Dependència 39/2006, Creu Roja i taller de manteniment.</p>
+<p>5. <strong>BancActiu Operatiu (Port 3004 / <code>/operatiu</code>)</strong>: Logística UAC de taulell, impressió QR i control d'estoc.</p>
+<ul>
+<li><strong>Benefici d'Arquitectura</strong>: Cada aplicació pot escalar, actualitzar-se i desplegar-se de forma independent sense caiguda del conjunt del sistema.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 4: Base de Dades Compartida i Traçabilitat Forense (@bancactiu/db)</h3>
+<ul>
+<li><strong>Paquet Central <code>@bancactiu/db</code></strong>:</li>
+<li>Model de dades compartit en memòria i persistent que unifica l'expedient ciutadà entre entitats.</li>
+<li>Eliminació de duplicitats: el CIP sanitari de CatSalut i el NIF del padró municipal s'enllacen de manera transparent.</li>
+<li><strong>AuditLog Forense Immutable</strong>:</li>
+<li>Registre criptogràfic de totes les intervencions amb identificador únic, DNI del professional, timestamp ISO i signatura de conformitat RGPD.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 5: Blindatge de Seguretat Zero-Trust i Compliment ENS Nivell Alt</h3>
+<ul>
+<li><strong>Mecanismes de Seguretat</strong>:</li>
+<li><strong>Edge Middleware</strong>: Intercepta qualsevol petició a la xarxa de Vercel i exigeix cookie signada <code>bancactiu_session</code>.</li>
+<li><strong>Identitat Arrel Superadmin</strong>: Vinculada exclusivament al DNI <code>52622304Y</code> (Mireia Valls i Grau).</li>
+<li><strong>Login Net</strong>: Prohibició absoluta d'autofill o credencials hardcoded.</li>
+<li><strong>Certificats Digitals Oficials</strong>: Validació automàtica amb idCAT, T-CAT de CatSalut i DNIe.</li>
+<li><strong>Aïllament de Xarxa Dual</strong>:</li>
+<li>En local: navegació per ports aïllats <code>localhost:3000-3004</code>.</li>
+<li>En producció Vercel Cloud: rutes unificades relatives sense cap dependència de localhost.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 6: Mòdul Salut (Prescripció Mèdica i Escala Barthel a CAPs)</h3>
+<ul>
+<li><strong>Funcionalitats Clíniques</strong>:</li>
+<li>Cua de prescripcions ortopèdiques pendents d'avaluació en temps real.</li>
+<li>Calculadora interactiva d'autonomia funcional mitjançant l'Escala de Barthel (0 a 100 punts).</li>
+<li>Validació en un sol clic amb signatura facultativa i derivació automàtica al magatzem de recursos.</li>
+<li><strong>Centres Integrats</strong>:</li>
+<li>CAP Sant Ildefons, CAP Bellvitge, CAP Just Oliveras, Hospital Universitari de Bellvitge.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 7: Mòdul Municipal (Ajuntament de Cornellà, Padró i SAD)</h3>
+<ul>
+<li><strong>Acció Social Local</strong>:</li>
+<li>Connexió amb el Padró Municipal d'Habitants per verificar residència immediata.</li>
+<li>Tramitació d'ajuts econòmics d'urgència per a la fiança de materials d'alta gamma.</li>
+<li>Coordinació amb el Servei d'Atenció Domiciliària (SAD) per a l'entrega i instal·lació a domicilis vulnerables.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 8: Mòdul Social & Operatiu (Creu Roja, Llei 39/2006 i Magatzem)</h3>
+<ul>
+<li><strong>Tercer Sector & Solidaritat</strong>:</li>
+<li>Fitxa d'intervenció familiar sota la Llei de Dependència 39/2006 amb pla individualitzat d'atenció (PIA).</li>
+<li>Gestió del taller mecànic solidari de Creu Roja: desinfecció, reparació de frens, canvi de bateries i posada a punt.</li>
+<li><strong>Taulell UAC & Logística</strong>:</li>
+<li>Lectura ràpida de codis QR i barres amb càmera o lector làser.</li>
+<li>Préstecs presencials amb signatura digital idCAT Mòbil i alertes automàtiques de data de devolució.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 9: Assistent Intel·ligent Kenzo / Kenza / Kenz Core & Simulació</h3>
+<ul>
+<li><strong>Tres Perfils d'Aparència Selectables</strong>:</li>
+<li><strong>Kenzo</strong>: Assistent executiu masculí (ciberseguretat, governança, blau/cian).</li>
+<li><strong>Kenza</strong>: Assistenta executiva femenina (acció comunitària, relacions institucionals, rosa/fúcsia).</li>
+<li><strong>Kenz Core</strong>: Nucli hologràfic (rendiment analític, maragda/teal).</li>
+<li><strong>Laboratori d'Estrès (Stress & Security Lab)</strong>:</li>
+<li>Simulació de càrrega massiva a escala de Catalunya: 250.000 operacions simultànies provades amb èxit (temps de resposta mitjà de 16.4 ms).</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h3>Diapositiva 10: Full de Ruta, Pasarel·les AOC i Model d'Homologació 2026</h3>
+<ul>
+<li><strong>Propers Passos</strong>:</li>
+<li>Integració amb la plataforma Via Oberta de l'Administració Oberta de Catalunya (AOC).</li>
+<li>Homologació amb el Catàleg d'Ajudes Tècniques de l'Institut Català d'Assistència i Serveis Socials (ICASS).</li>
+<li>Desplegament de la xarxa a les comarques del Baix Llobregat, Vallès Occidental i Barcelonès.</li>
+<li><strong>Estat Actual del Desplegament</strong>:</li>
+<li>Producció activa a Vercel Cloud: <code>https://banc-actiu-2-0-separacion-entidades.vercel.app</code></li>
+<li>Codi font auditat i sincronitzat a GitHub (<code>bartcatmo-rgb</code>).</li>
+</ul>
+
+  <div class="footer">
+    BancActiu 3.0 &middot; Ecosistema Descentralitzat de Salut i Benestar &middot; DNI SuperAdmin: 48956602Z (Marc Cachinero) &middot; Producció Oficial Vercel Cloud
+  </div>
+</body>
+</html>

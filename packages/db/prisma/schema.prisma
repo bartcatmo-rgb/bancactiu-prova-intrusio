@@ -1,0 +1,215 @@
+// Schema Prisma - BancActiu 2.0 Base de Dades Compartida
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum AppRole {
+  SUPERADMIN
+  TECNIC_SALUT
+  AJUNTAMENT
+  TERCER_SECTOR
+  ADMINISTRATIU_OPERATIU
+  VOLUNTARI
+}
+
+enum CentreTipus {
+  CAP
+  HOSPITAL
+  AJUNTAMENT
+  SERVEIS_SOCIALS
+  CREU_ROJA
+  ENTITAT_VEINAL
+  MAGATZEM_CENTRAL
+}
+
+enum PrestecEstat {
+  SOL_LICITAT
+  VALIDAT_CLINIC
+  ACTIU_LLIURAT
+  RETORNAT
+  EN_MANTENIMENT
+  RETARDAT
+}
+
+model User {
+  id              String         @id @default(cuid())
+  dni             String         @unique
+  nomComplet      String
+  email           String         @unique
+  telefon         String?
+  rolPrincipal    AppRole        @default(ADMINISTRATIU_OPERATIU)
+  centreId        String?
+  centre          Centre?        @relation(fields: [centreId], references: [id])
+  actiu           Boolean        @default(true)
+  idCatAutenticat Boolean        @default(false)
+  dataCreacio     DateTime       @default(now())
+  dataActualitzacio DateTime     @updatedAt
+  userRoles       UserRole[]
+  auditLogs       AuditLog[]
+  prestecsGesti   Prestec[]      @relation("GestorPrestec")
+}
+
+model UserRole {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      AppRole
+  centreId  String?
+  centre    Centre?  @relation(fields: [centreId], references: [id])
+  conceditPer String
+  dataConcessio DateTime @default(now())
+
+  @@unique([userId, role, centreId])
+}
+
+model Gerencia {
+  id          String   @id @default(cuid())
+  codi        String   @unique
+  nom         String
+  regio       String
+  activa      Boolean  @default(true)
+  centres     Centre[]
+  dataCreacio DateTime @default(now())
+}
+
+model Centre {
+  id          String      @id @default(cuid())
+  codi        String      @unique
+  nom         String
+  tipus       CentreTipus
+  municipi    String
+  adreca      String?
+  gerenciaId  String
+  gerencia    Gerencia    @relation(fields: [gerenciaId], references: [id])
+  actiu       Boolean     @default(true)
+  usuaris     User[]
+  userRoles   UserRole[]
+  serveis     Servei[]
+  materials   MaterialOrtopedic[]
+  prestecs    Prestec[]
+  dataCreacio DateTime    @default(now())
+}
+
+model Servei {
+  id          String        @id @default(cuid())
+  codi        String
+  nom         String
+  descripcio  String?
+  centreId    String
+  centre      Centre        @relation(fields: [centreId], references: [id])
+  llocs       LlocTreball[]
+  actiu       Boolean       @default(true)
+  dataCreacio DateTime      @default(now())
+
+  @@unique([centreId, codi])
+}
+
+model LlocTreball {
+  id          String   @id @default(cuid())
+  codi        String
+  nom         String
+  serveiId    String
+  servei      Servei   @relation(fields: [serveiId], references: [id])
+  rolRequerit AppRole
+  actiu       Boolean  @default(true)
+  dataCreacio DateTime @default(now())
+
+  @@unique([serveiId, codi])
+}
+
+model Citizen {
+  id          String    @id @default(cuid())
+  cip         String    @unique
+  dni         String    @unique
+  nomComplet  String
+  telefon     String
+  email       String?
+  adreca      String?
+  municipi    String    @default("Cornellà de Llobregat")
+  vulnerabilitatSocial Boolean @default(false)
+  prestecs    Prestec[]
+  dataRegistre DateTime @default(now())
+}
+
+model MaterialOrtopedic {
+  id            String   @id @default(cuid())
+  codi          String   @unique
+  categoria     String
+  model         String
+  numeroSerie   String?
+  centreId      String
+  centre        Centre   @relation(fields: [centreId], references: [id])
+  disponible    Boolean  @default(true)
+  enTaller      Boolean  @default(false)
+  prestecs      Prestec[]
+  dataAlta      DateTime @default(now())
+}
+
+model Prestec {
+  id            String        @id @default(cuid())
+  codiExpedient String        @unique
+  citizenId     String
+  citizen       Citizen       @relation(fields: [citizenId], references: [id])
+  materialId    String
+  material      MaterialOrtopedic @relation(fields: [materialId], references: [id])
+  centreId      String
+  centre        Centre        @relation(fields: [centreId], references: [id])
+  gestorId      String
+  gestor        User          @relation("GestorPrestec", fields: [gestorId], references: [id])
+  estat         PrestecEstat  @default(SOL_LICITAT)
+  dataPrestec   DateTime      @default(now())
+  dataRetornPrevista DateTime
+  dataRetornReal DateTime?
+  observacions  String?
+}
+
+model AuditLog {
+  id            String   @id @default(cuid())
+  timestamp     DateTime @default(now())
+  actorDni      String
+  actorNom      String
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id])
+  appSource     String
+  accio         String
+  entitat       String
+  detall        String
+  ip            String   @default("127.0.0.1")
+  rgpdConforme  Boolean  @default(true)
+}
+
+model SecurityIncident {
+  id            String   @id @default(cuid())
+  timestamp     DateTime @default(now())
+  ip            String
+  vectorAtac    String
+  gravetat      String   @default("MITJANA")
+  bloquejat     Boolean  @default(true)
+  detalls       String
+}
+
+model AIAgentLog {
+  id            String   @id @default(cuid())
+  timestamp     DateTime @default(now())
+  prompt        String
+  resumAccio    String
+  arxiusAfectats String[]
+  autorDni      String
+  estat         String   @default("APLICAT")
+}
+
+model StressTestReport {
+  id            String   @id @default(cuid())
+  timestamp     DateTime @default(now())
+  duracioAnys   Int
+  totalTransaccions Int
+  picoReqSec    Float
+  latenciaP95Ms Float
+  memoriaMb     Float
+  status        String   @default("PASS")
+}

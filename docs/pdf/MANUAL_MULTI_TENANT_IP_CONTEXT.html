@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual d'Arquitectura Multi-Tenant Contextual i White-Labeling - BancActiu 3.0</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 20mm 16mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+    }
+    .header-banner {
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: bold;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    h1 {
+      font-size: 24px;
+      color: #0f172a;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 16px;
+      color: #1e3a8a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 14px;
+      color: #0f172a;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      page-break-after: avoid;
+    }
+    blockquote {
+      background: #f8fafc;
+      border-left: 4px solid #38bdf8;
+      margin: 12px 0;
+      padding: 10px 14px;
+      color: #334155;
+      font-style: italic;
+      border-radius: 0 8px 8px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 11px;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      background: #f1f5f9;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #be185d;
+    }
+    ul, ol {
+      margin: 8px 0 14px 20px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-banner">
+    <div>
+      <div class="brand-title">Generalitat de Catalunya · Departament de Salut</div>
+      <div class="brand-sub">Generalitat de Catalunya · BancActiu 3.0</div>
+    </div>
+    <div class="badge">ENS NIVELL ALT CERTIFICAT</div>
+  </div>
+<h1>Arquitectura Multi-Tenant Dinàmic per Context d'IP i Host (White-Labeling) - BancActiu 3.0</h1>
+<blockquote>**Documentació Tècnica d'Arquitectura i Desplegament de Marca Blanca Contextual**</blockquote>
+<blockquote>BancActiu 3.0 Enterprise · Capa d'Orquestració Edge · Compliment ENS Nivell Alt</blockquote>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>1. Resum Executiu</h2>
+<p>La plataforma <strong>BancActiu 3.0</strong> opera com un ecosistema federat utilitzat per múltiples organitzacions independents:</p>
+<ul>
+<li>Administració sanitària de la Generalitat de Catalunya (CatSalut / ICS).</li>
+<li>Administracions municipals (com l'Ajuntament de Cornellà de Llobregat).</li>
+<li>Entitats del Tercer Sector i xarxes ciutadanes (Creu Roja, voluntariat, Banc del Temps).</li>
+<li>Operadors logístics i magatzems ortoprotèsics (UAC).</li>
+</ul>
+<p>Per preservar la sobirania institucional, la privadesa en auditories públiques i prevenir la fuga d'informació en portals accessibles per Internet, s'ha implementat un <strong>sistema de Multi-Tenant Dinàmic basat en Context d'IP d'Origen i Host HTTP</strong>.</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>2. Objectius d'Enginyeria</h2>
+<p>1. <strong>Eliminació Total de Hardcoding Institucional</strong>: Cap fitxer de codi font a la capa de presentació pública o login conté referències estàtiques a organismes particulars.</p>
+<p>2. <strong>Disseny Corporatiu Neutre per Defecte</strong>: Qualsevol petició procedent d'adreces IP no assignades o adreces públiques d'auditoria rep la identitat neutra <strong>BancActiu 3.0 Enterprise</strong>.</p>
+<p>3. <strong>Resolució Automàtica a l'Edge (Zero Latency)</strong>: La resolució es produeix directament al middleware de Next.js mitjançant avaluació de rangs CIDR i capçaleres HTTP en memòria (< 1 ms d'impacte).</p>
+<p>4. <strong>Protecció de Credencials i DNI</strong>: El portal d'accés no exposa mai DNI o identificadors privats a les etiquetes o camps del formulari.</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>3. Matriu de Mapeig de Xarxa i Identitats</h2>
+<table><thead><tr><th>Identificador Tenant</th><th>Codi Canònic</th><th>Organització Institucional</th><th>Adreces IP / Rangs CIDR</th><th>Hosts / Subdominis</th><th>Mòdul Associat</th></tr></thead><tbody>
+<tr><td><code>tenant-esteve-terrades</code></td><td><code>IPFP_ESTEVE_TERRADES</code></td><td>Institut Esteve Terrades i Illa (Cornellà)</td><td><code>10.151.0.0/16</code>, <code>192.168.151.0/24</code>, <code>84.88.151.0/24</code></td><td><code>esteveterrades.cat</code>, <code>ieti.cat</code></td><td>Nexus & Tots els Mòduls</td></tr>
+<tr><td><code>tenant-enterprise</code></td><td><code>BANCACTIU_ENTERPRISE</code></td><td>BancActiu 3.0 Enterprise</td><td>*Resta d'Internet / 0.0.0.0/0*</td><td><code>*</code>, <code>nexus.*</code>, <code>localhost:3000</code></td><td>Gateway Central</td></tr>
+<tr><td><code>tenant-catsalut</code></td><td><code>CATSALUT_GAPIC</code></td><td>Servei Català de la Salut &middot; GAPIC</td><td><code>10.200.0.0/16</code>, <code>172.16.100.0/24</code>, <code>192.168.10.0/24</code></td><td><code>salut.*</code>, <code>catsalut.*</code>, <code>localhost:3001</code></td><td><code>/salut</code> (ICS)</td></tr>
+<tr><td><code>tenant-cornella</code></td><td><code>AJUNTAMENT_CORNELLA</code></td><td>Ajuntament de Cornellà de Llobregat</td><td><code>10.150.0.0/16</code>, <code>192.168.20.0/24</code></td><td><code>cornella.*</code>, <code>municipal.*</code>, <code>localhost:3002</code></td><td><code>/municipal</code></td></tr>
+<tr><td><code>tenant-social</code></td><td><code>TERCER_SECTOR</code></td><td>Xarxa Social &middot; Tercer Sector</td><td><code>10.180.0.0/16</code>, <code>192.168.30.0/24</code></td><td><code>social.*</code>, <code>creuroja.*</code>, <code>localhost:3003</code></td><td><code>/social</code></td></tr>
+<tr><td><code>tenant-logistica</code></td><td><code>MAGATZEM_UAC</code></td><td>Centre Logístic &middot; Magatzem UAC</td><td><code>10.190.0.0/16</code>, <code>192.168.40.0/24</code></td><td><code>logistica.*</code>, <code>operatiu.*</code>, <code>localhost:3004</code></td><td><code>/operatiu</code></td></tr>
+</tbody></table>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>4. Implementació Tècnica</h2>
+<h3>4.1. Mòdul `@bancactiu/db/tenant.ts`</h3>
+<p>El paquet comú de base de dades conté la definició d'estructures TypeScript i les funcions de concordança:</p>
+<ul>
+<li><code>TenantConfig</code>: Interfície que defineix <code>id</code>, <code>name</code>, <code>shortCode</code>, <code>allowedIpRanges</code>, <code>hosts</code>, <code>themeColor</code>, <code>badgeText</code> i <code>logoUrl</code>.</li>
+<li><code>resolveTenant(ip, host, tenantParam)</code>: Algorisme d'avaluació en cascada:</li>
+</ul>
+<p>1. Paràmetre explícit de sobreescriptura (<code>?tenant=...</code> per a proves).</p>
+<p>2. Coincidència de nom de domini / subdomini (<code>host</code>).</p>
+<p>3. Coincidència de rang IP mitjançant l'analitzador CIDR integrat.</p>
+<p>4. Retorn del perfil neutre per defecte si no hi ha coincidència.</p>
+<h3>4.2. Middleware Perimetral (`apps/bancactiu-nexus/middleware.ts`)</h3>
+<ul>
+<li>Intercepta totes les sol·licituds entrants a les rutes de l'aplicació.</li>
+<li>Extreu la IP real del client considerant proxys inversos (<code>X-Forwarded-For</code>, <code>X-Real-IP</code>).</li>
+<li>Injecta capçaleres a la petició:</li>
+<li><code>x-tenant-id</code>: ID de la instància tenant resolta.</li>
+<li><code>x-tenant-code</code>: Codi identificador intern.</li>
+<li><code>x-tenant-name</code>: Nom de la marca per a la vista.</li>
+<li><code>x-tenant-badge</code>: Etiqueta contextual.</li>
+<li><code>x-client-ip</code>: Adreça IP detectada del client.</li>
+<li>Injecta la cookie segura <code>bancactiu_tenant</code> per permetre la hidratació immediata del client sense crides API addicionals.</li>
+</ul>
+<h3>4.3. Consum des de Components React Client (`useTenantContext`)</h3>
+<p>Els components interactius com <code>login/page.tsx</code> i <code>BancActiuNexusClient.tsx</code> incorporen el hook lleuger <code>useTenantContext()</code>:</p>
+<ul>
+<li>Llegeix la cookie <code>bancactiu_tenant</code> en temps de muntatge.</li>
+<li>Modifica de manera transparent el títol del sistema, colors d'accent, badges i peus de pàgina.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>5. Verificació i Proves de Penetració</h2>
+<p>1. <strong>Prova per Defecte (Marca Neutra)</strong>:</p>
+<p>Accedir a <code>/login</code> sense paràmetres ni adreça corporativa. La interfície mostra <code>BancActiu 2.0 Enterprise</code> amb badge blau cian neutre i sense cap menció a institucions particulars.</p>
+<p>2. <strong>Prova de Tenant Específic (Exemple CatSalut)</strong>:</p>
+<p>Navegar a <code>/login?tenant=catsalut</code>. La interfície adapta la seva insígnia a <code>CatSalut · GAPIC</code> amb esquema cromàtic blau marí.</p>
+<p>3. <strong>Prova de Tenant Municipal (Exemple Cornellà)</strong>:</p>
+<p>Navegar a <code>/login?tenant=cornella</code>. La interfície adapta la insígnia a <code>Ajuntament de Cornellà</code> amb tons maragda.</p>
+<p>4. <strong>Verificació de Seguretat</strong>:</p>
+<p>Cap valor de DNI o contrasenya es troba codificat al DOM públic o en bundles JavaScript estàtics generats per Webpack.</p>
+
+  <div class="footer">
+    BancActiu 3.0 &middot; Ecosistema Descentralitzat de Salut i Benestar &middot; DNI SuperAdmin: 48956602Z (Marc Cachinero) &middot; Producció Oficial Vercel Cloud
+  </div>
+</body>
+</html>

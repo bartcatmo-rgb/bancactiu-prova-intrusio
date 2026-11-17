@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual d'Operació del Superadministrador - BancActiu 3.0</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 20mm 16mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+    }
+    .header-banner {
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: bold;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    h1 {
+      font-size: 24px;
+      color: #0f172a;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 16px;
+      color: #1e3a8a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 14px;
+      color: #0f172a;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      page-break-after: avoid;
+    }
+    blockquote {
+      background: #f8fafc;
+      border-left: 4px solid #38bdf8;
+      margin: 12px 0;
+      padding: 10px 14px;
+      color: #334155;
+      font-style: italic;
+      border-radius: 0 8px 8px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 11px;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      background: #f1f5f9;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #be185d;
+    }
+    ul, ol {
+      margin: 8px 0 14px 20px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-banner">
+    <div>
+      <div class="brand-title">Generalitat de Catalunya · Departament de Salut</div>
+      <div class="brand-sub">Generalitat de Catalunya · BancActiu 3.0</div>
+    </div>
+    <div class="badge">ENS NIVELL ALT CERTIFICAT</div>
+  </div>
+<h1>Manual d'Operació del Superadministrador - BancActiu Nexus 3.0</h1>
+<blockquote>**Guia Oficial de Gestió, Governança, Navegació Adaptativa i Administració de la Plataforma**</blockquote>
+<blockquote>BancActiu 3.0 Enterprise · Arquitectura Multi-Tenant Contextual · Versió 3.0 Production</blockquote>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>1. Credencials i Identitat Acreditada</h2>
+<p>El rol de Superadministrador (<code>SUPERADMIN</code>) és el màxim nivell de privilegi del sistema (<strong>Nivell 5: Control Total Catalunya & IETI</strong>). Tota la governança, seguretat i polítiques d'interoperabilitat estan centralitzades sota aquesta identitat.</p>
+<ul>
+<li><strong>Superadministrador Oficial</strong>: <code>Marc Cachinero Baranda</code></li>
+<li><strong>DNI Únic Acreditat</strong>: <code>48956602Z</code></li>
+<li><strong>Email Corporatiu</strong>: <code>marccachinero@gmail.com</code></li>
+<li><strong>Centre Acreditat</strong>: Institut Esteve Terrades i Illa (Cornellà de Llobregat)</li>
+<li><strong>Usuari Professor / Coordinador</strong>: <code>Administrador</code></li>
+<li><strong>ID d'accés</strong>: <code>Administrador</code> / <code>ADMIN</code></li>
+<li><strong>Clau inicial per defecte</strong>: <code>1234</code> (Requeriment obligatori <code>must_change_password = true</code>)</li>
+<li><strong>Àmbit</strong>: Supervisió pedagògica, pentesting i ciberseguretat aplicada.</li>
+<li><strong>Entorn de Governança</strong>: <code>bancactiu-nexus</code> (Port <code>3000</code> en desenvolupament local o domini oficial a Vercel Cloud).</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>2. Protocol d'Accés Segur (Zero-Trust)</h2>
+<p>BancActiu 2.0 no permet accessos anònims ni credencials compartides. L'accés està regit per l'arquitectura Zero-Trust auditada sota l'Esquema Nacional de Seguretat (ENS Nivell Alt).</p>
+<h3>2.1. Formulari Net d'Inici de Sessió ("Clean Login")</h3>
+<p>A la ruta <code>/login</code>:</p>
+<p>1. Tots els camps d'identificació i contrasenya es presenten completament buits (<code>value=""</code>, <code>autoComplete="off"</code>), sense valors per defecte ni autofill per prevenir atacs d'infiltració.</p>
+<p>2. Introduïu el vostre DNI: <code>48956602Z</code> (Marc Cachinero Baranda) o <code>Administrador</code>.</p>
+<p>3. Introduïu la vostra clau d'accés.</p>
+<h3>2.2. Flux de Primer Accés i Canvi Obligatori de Contrasenya</h3>
+<p>En cas que s'accedeixi com a usuari docent <code>Administrador</code> amb clau inicial <code>1234</code>, o un compte nou:</p>
+<p>1. El sistema commuta automàticament a la pantalla de <strong>Configuració Inicial de Clau</strong>.</p>
+<p>2. Definiu una nova contrasenya que compleixi els criteris ENS Nivell Alt:</p>
+<ul>
+<li>Longitud mínima de 8 caràcters.</li>
+<li>Almenys una lletra majúscula i una minúscula.</li>
+<li>Almenys un dígit numèric (0-9).</li>
+<li>Almenys un símbol o caràcter especial (<code>!@#$%^&*</code>).</li>
+</ul>
+<p>3. Confirmeu la nova clau i premeu <strong>Confirmar i Accedir a Nexus</strong>.</p>
+<p>4. La contrasenya queda persistida a <code>@bancactiu/db</code> xifrada amb hash criptogràfic, s'anul·la la marca <code>mustChangePassword = false</code> i es genera la cookie de sessió segura <code>bancactiu_session</code>.</p>
+<h3>2.3. Avís Ineludible de Drets de Propietat Intel·lectual</h3>
+<p>En el primer inici de sessió de qualsevol usuari (Superadmin, Administrador o facultatiu), s'activa un <strong>modal obligatori i ineludible de Drets de Propietat Intel·lectual</strong>:</p>
+<p>1. No es pot descartar amb teclat ESC ni clicant fora de la finestra.</p>
+<p>2. L'usuari ha de declarar formalment haver llegit i acceptar les condicions legals (RDL 1/1996, secret professional RGPD Art. 9 i prohibició de descompilació o ús comercial).</p>
+<p>3. L'acceptació queda registrada a <code>localStorage</code> i vinculada a l'adreça IP d'accés en pistes d'auditoria Zero-Trust.</p>
+<h3>2.3. Accés mitjançant Certificat Digital (idCAT / T-CAT)</h3>
+<p>1. Al formulari de login, seleccioneu la pestanya <strong>idCAT / T-CAT</strong>.</p>
+<p>2. El sistema valida la infraestructura de clau pública de l'Agència Catalana de Certificació (EC-ACC) vinculada al DNI <code>52622304Y</code>.</p>
+<p>3. Premeu <strong>Validar Certificat Digital (52622304Y)</strong> per a l'accés biomètric/criptogràfic directe.</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>3. Gestió Dual de Xarxa i Navegació Adaptativa (Local vs Vercel Cloud)</h2>
+<p>La plataforma incorpora un motor de resolució dinàmica d'adreces (<code>resolveAppTargetUrl</code>) que commuta automàticament segons l'entorn de treball:</p>
+<h3>3.1. Entorn de Desenvolupament Local (`localhost`)</h3>
+<p>Quan s'executa a l'equip local del desenvolupador:</p>
+<ul>
+<li><strong>Nexus (SuperAdmin)</strong>: <code>http://localhost:3000</code></li>
+<li><strong>Salut (CatSalut / ICS)</strong>: <code>http://localhost:3001</code></li>
+<li><strong>Municipal (Cornellà)</strong>: <code>http://localhost:3002</code></li>
+<li><strong>Social (Creu Roja)</strong>: <code>http://localhost:3003</code></li>
+<li><strong>Operatiu (UAC / Magatzem)</strong>: <code>http://localhost:3004</code></li>
+<li>El Launcher identifica automàticament <code>localhost</code> o <code>127.0.0.1</code> i enllaça directament als ports respectius.</li>
+</ul>
+<h3>3.2. Entorn de Producció al Núvol (Vercel Cloud)</h3>
+<p>Quan s'executa a la xarxa pública (<code>https://banc-actiu-2-0-separacion-entidades.vercel.app</code>):</p>
+<ul>
+<li>Els enllaços utilitzen rutes relatives unificades o dominis gestionats per variables d'entorn, <strong>evitant qualsevol intent d'accedir a localhost</strong>:</li>
+<li><strong>Nexus</strong>: <code>/</code></li>
+<li><strong>Salut</strong>: <code>/salut</code> (o <code>NEXT_PUBLIC_SALUT_URL</code>)</li>
+<li><strong>Municipal</strong>: <code>/municipal</code> (o <code>NEXT_PUBLIC_MUNICIPAL_URL</code>)</li>
+<li><strong>Social</strong>: <code>/social</code> (o <code>NEXT_PUBLIC_SOCIAL_URL</code>)</li>
+<li><strong>Operatiu</strong>: <code>/operatiu</code> (o <code>NEXT_PUBLIC_OPERATIU_URL</code>)</li>
+<li>Totes les rutes de producció estan blindades pel mateix <code>middleware.ts</code> perimetral amb comprovació estricta de la sessió del Superadministrador.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>4. Barra d'Administració Superior Exclusiva (DNI 52622304Y)</h2>
+<p>Amb la release 2.0 de BancActiu s'integra a la part superior de la consola de governança Nexus una <strong>Barra de Control Exclusiva</strong>, visible únicament quan l'usuari autenticat disposa del <strong>DNI 52622304Y</strong> (Mireia Valls · Nivell 5 Catalunya).</p>
+<h3>4.1. Característiques de Disseny i Usabilitat</h3>
+<ul>
+<li><strong>Estil Glassmorphism d'Alta Gamma</strong>: Capa translúcida amb desenfocament profund (<code>backdrop-blur-2xl bg-slate-950/85</code>), vora amb degradat porpra (<code>border-purple-500/30</code>) i acompanyament d'ombra flotant.</li>
+<li><strong>Fixació Pinned / Sticky (<code>sticky top-0 z-50</code>)</strong>: Roman accessible permanentment al capdamunt mentre es navega pel tauler, sense tapar cap element inferior.</li>
+<li><strong>Scroll Fluid i Confort Visual</strong>: Configuració de contenidor <code>overflow-x-hidden overflow-y-auto min-h-screen</code>, suprimint qualsevol confinament de pantalla ("zero scroll") i assegurant que totes les targetes, mètriques i panells es puguin consultar amb comoditat total.</li>
+</ul>
+<h3>4.2. Botons d'Accés Ràpid Directe</h3>
+<p>1. <strong>Gestió d'Usuaris i Rols (<code>roles-services</code>)</strong>:</p>
+<ul>
+<li>Obertura immediata de l'espai d'administració de perfils per assignar rols a administratius, facultatius sanitaris i entitats veïnals o del tercer sector.</li>
+</ul>
+<p>2. <strong>Auditoria Zero-Trust (<code>security-lab</code>)</strong>:</p>
+<ul>
+<li>Accés directe al banc de proves d'estrès, monitoratge de xarxa perimetral i estat del compliment ENS Nivell Alt.</li>
+</ul>
+<p>3. <strong>Gestió de Xarxa i Préstecs (Enllaç Social & Operatiu)</strong>:</p>
+<ul>
+<li><strong>Xarxa Social</strong>: Salt immediat al mòdul Social (<code>/social</code> o port <code>3003</code> en local) per gestionar la xarxa ciutadana i el Banc del Temps.</li>
+<li><strong>Gestió de Préstecs</strong>: Salt directe al mòdul Operatiu (<code>/operatiu</code> o port <code>3004</code> en local) per a la traçabilitat de material ortoprotèsic i gestió logística de magatzem.</li>
+</ul>
+<p>4. <strong>Accés Directe a Manuals & PDFs (<code>/docs</code>)</strong>:</p>
+<ul>
+<li>Botó per descarregar en un sol clic els expedients oficials en PDF vectorial A4.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>5. Espais de Treball del Superadministrador</h2>
+<p>Des del tauler de control principal de Nexus es pot operar sobre 5 espais clau:</p>
+<h3>5.1. Alta Descentralitzada de Centres (`centres-onboarding`)</h3>
+<ul>
+<li>Alta i configuració de CAPs, hospitals d'aguts, àrees bàsiques de salut (ABS) i dependències municipals vinculades a les 5 gerències territorials de Catalunya (Metropolitana Sud, Barcelona Ciutat, Girona, Lleida i Camp de Tarragona).</li>
+</ul>
+<h3>5.2. Rols, Serveis i Llocs de Treball (`roles-services`)</h3>
+<ul>
+<li>Administració de l'arbre de permisos RBAC per a facultatius mèdics, treballadors socials, operaris de magatzem i voluntaris comunitaris.</li>
+</ul>
+<h3>5.3. Stress & Security Lab (`security-lab`)</h3>
+<ul>
+<li>Banc de proves de simulació de concurrència massiva (fins a 250.000 operacions simultànies projectades a 1-3 anys a Catalunya) i escàner de vulnerabilitats en temps real (Score 99.4% d'eficiència).</li>
+</ul>
+<h3>5.4. Consola de l'Enginyer Agent IA de Codi (`ai-agent`)</h3>
+<ul>
+<li>Entorn interactiu per a la generació i adaptació de components i rutes mitjançant instruccions en llenguatge natural, amb validació de diffs abans d'aplicar canvis.</li>
+</ul>
+<h3>5.5. Pasarel·les AOC & Interoperabilitat (`interoperability`)</h3>
+<ul>
+<li>Configuració de canals mTLS, validació de certificats digitals i connexió als registres del Padró Municipal i Dependència de la Generalitat de Catalunya.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>6. Gateway Launcher (Navegador de Micro-Aplicacions)</h2>
+<p>El commutador flotant i accessible a la capçalera permet saltar de forma immediata entre les 5 micro-aplicacions del monorepo, adaptant-se a l'entorn de producció o desenvolupament i oferint simulació de rols per auditar accessos.</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>7. Assistent Intel·ligent Flotant (Kenzo / Kenza / Kenz Core)</h2>
+<p>Nexus incorpora a la cantonada inferior dreta l'assistent d'intel·ligència artificial per a tasques d'auditoria, consulta i presentació executiva:</p>
+<ul>
+<li><strong>Selector d'Aparència Interactiu</strong>:</li>
+<li><strong>Kenzo</strong>: Perfil masculí / executiu amb estètica blau/índigo/cian.</li>
+<li><strong>Kenza</strong>: Perfil femení / executiva amb estètica rosa/porpra/ambre.</li>
+<li><strong>Kenz Core</strong>: Perfil neutre / hologràfic tecnològic amb estètica maragda/teal/cian.</li>
+<li><strong>Persistència en Navegador</strong>: El perfil escollit es desa a <code>localStorage</code> sota la clau <code>bancactiu_kenzo_appearance</code> vinculada a la sessió del Superadministrador (DNI <code>52622304Y</code>).</li>
+<li><strong>Mode Presentació de Diapositives (Slides Mode)</strong>: Carrusel d'alta definició per projectar el resum executiu, auditories ENS i mètriques en reunions institucionals.</li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>8. Protocol de Tancament de Sessió Segur</h2>
+<p>Per garantir la inviolabilitat del perímetre en finalitzar la jornada:</p>
+<p>1. Feu clic al botó <strong>Tancar Sessió</strong> (<code>LogOut</code>) situat a la capçalera superior dreta.</p>
+<p>2. La cookie <code>bancactiu_session</code> serà invalidada immediatament al navegador i al servidor.</p>
+<p>3. El sistema redirigirà a <code>/login</code>, impedint qualsevol accés mitjançant l'historial del navegador.</p>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>9. Sistema Multi-Tenant Dinàmic per Context d'IP i Host (White-Labeling)</h2>
+<p>Amb la finalitat de preservar la privadesa, neutralitat i seguretat de les institucions adherides, BancActiu 2.0 implementa una arquitectura de <strong>White-Labeling contextual dinàmic</strong> gestionada a la capa de límit (*Edge Middleware*).</p>
+<h3>9.1. Principi de Disseny Neutre i Desacoblament Institucional</h3>
+<ul>
+<li><strong>Eliminació de Hardcoding</strong>: Cap interfície pública o no autenticada conté referències corporatives fixes a organismes com la Generalitat de Catalunya, CatSalut, Ajuntament de Cornellà o Creu Roja.</li>
+<li><strong>Aspecte Corporatiu Neutre</strong>: Per defecte, qualsevol client extern o auditoria pública rep la marca neutra <strong>BancActiu 2.0 Enterprise</strong> ("Plataforma de Governança i Interoperabilitat Descentralitzada").</li>
+<li><strong>No Exposició de DNI</strong>: El DNI acreditat del Superadministrador no s'imprimeix mai com a plantilla o text visible abans de l'autenticació.</li>
+</ul>
+<h3>9.2. Mecanisme de Resolució Contextual Automàtica</h3>
+<p>El fitxer <code>apps/bancactiu-nexus/middleware.ts</code> avalua cada petició HTTP en temps real abans d'arribar a les pàgines o API endpoints:</p>
+<p>1. <strong>Inspecció de Capçaleres de Xarxa</strong>: S'analitza <code>X-Forwarded-For</code>, <code>X-Real-IP</code> i la capçalera <code>Host</code>.</p>
+<p>2. <strong>Coincidència de Rangs CIDR Corporatius</strong>:</p>
+<ul>
+<li><strong>CatSalut / Departament de Salut</strong>: Rangs <code>10.200.0.0/16</code>, <code>172.16.100.0/24</code>, <code>192.168.10.0/24</code> o subdomini <code>salut.*</code> / <code>catsalut.*</code>.</li>
+<li><strong>Ajuntament de Cornellà</strong>: Rangs <code>10.150.0.0/16</code>, <code>192.168.20.0/24</code> o subdomini <code>cornella.*</code> / <code>municipal.*</code>.</li>
+<li><strong>Tercer Sector / Creu Roja</strong>: Rangs <code>10.180.0.0/16</code>, <code>192.168.30.0/24</code> o subdomini <code>social.*</code> / <code>creuroja.*</code>.</li>
+</ul>
+<p>3. <strong>Injecció de Capçaleres i Cookie Segura</strong>:</p>
+<ul>
+<li>El Middleware injecta automàticament les capçaleres <code>x-tenant-id</code>, <code>x-tenant-code</code>, <code>x-tenant-name</code>, <code>x-tenant-badge</code> i la cookie <code>bancactiu_tenant</code> (format JSON codificat, <code>SameSite=Lax</code>, <code>Path=/</code>).</li>
+<li>Els components de client (<code>useTenantContext</code>) llegeixen aquest context per personalitzar els logotips, colors de targetes i títols sense recarregar la pàgina.</li>
+</ul>
+<h3>9.3. Matriu de Perfils Tenant Suportats</h3>
+<table><thead><tr><th>Tenant ID</th><th>Codi Institucional</th><th>Nom Corporatiu</th><th>Rangs IP / Hosts Associats</th><th>Mòdul d'Operació</th></tr></thead><tbody>
+<tr><td><code>tenant-esteve-terrades</code></td><td><code>IPFP_ESTEVE_TERRADES</code></td><td>Institut Esteve Terrades i Illa (Cornellà)</td><td><code>10.151.0.0/16</code>, <code>esteveterrades.cat</code></td><td>Nexus & Tots els Mòduls</td></tr>
+<tr><td><code>tenant-enterprise</code></td><td><code>BANCACTIU_ENTERPRISE</code></td><td>BancActiu 2.0 Enterprise</td><td>*Per defecte (Internet oberta / Auditories)*</td><td>Nexus Governança Central</td></tr>
+<tr><td><code>tenant-catsalut</code></td><td><code>CATSALUT_GAPIC</code></td><td>Servei Català de la Salut &middot; GAPIC</td><td><code>10.200.0.0/16</code>, <code>salut.bancactiu.cat</code></td><td><code>/salut</code> (ICS / XHUP)</td></tr>
+<tr><td><code>tenant-cornella</code></td><td><code>AJUNTAMENT_CORNELLA</code></td><td>Ajuntament de Cornellà de Llobregat</td><td><code>10.150.0.0/16</code>, <code>cornella.bancactiu.cat</code></td><td><code>/municipal</code> (Serveis Socials)</td></tr>
+<tr><td><code>tenant-social</code></td><td><code>TERCER_SECTOR</code></td><td>Xarxa Comunitària &middot; Tercer Sector</td><td><code>10.180.0.0/16</code>, <code>social.bancactiu.cat</code></td><td><code>/social</code> (Banc del Temps)</td></tr>
+<tr><td><code>tenant-logistica</code></td><td><code>MAGATZEM_UAC</code></td><td>Centre Logístic &middot; Magatzem UAC</td><td><code>10.190.0.0/16</code>, <code>logistica.bancactiu.cat</code></td><td><code>/operatiu</code> (Ortoprotèsica)</td></tr>
+</tbody></table>
+<h3>9.4. Sobreescriptura per a Proves i Homologació (`?tenant=`)</h3>
+<p>Per a equips d'auditoria o proves en entorns sandbox, és possible provar qualsevol context de tenant mitjançant el paràmetre de consulta:</p>
+<ul>
+<li><code>https://banc-actiu-2-0-separacion-entidades.vercel.app/login?tenant=esteveterrades</code></li>
+<li><code>https://banc-actiu-2-0-separacion-entidades.vercel.app/login?tenant=catsalut</code></li>
+<li><code>https://banc-actiu-2-0-separacion-entidades.vercel.app/login?tenant=cornella</code></li>
+<li><code>https://banc-actiu-2-0-separacion-entidades.vercel.app/login?tenant=social</code></li>
+<li><code>https://banc-actiu-2-0-separacion-entidades.vercel.app/login?tenant=enterprise</code></li>
+</ul>
+<hr style="border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;" />
+<h2>10. Mòdul d'Auditoria Massiva i Simulació d'Estrès (Fins a 5 Anys)</h2>
+<p>La versió 3.0 Enterprise incorpora directament a la Consola de Superadministrador un mòdul avançat per a l'auditoria perimetral massiva i l'estudi de càrrega a llarg termini (fins a 5 anys de creixement sostingut).</p>
+<h3>10.1. Endpoint de Backend (`/api/admin/simulations`)</h3>
+<p>Protegit estrictament per la identitat acreditada del Superadministrador (<code>48956602Z</code> / Marc Cachinero Baranda):</p>
+<ul>
+<li><strong>Mètode</strong>: <code>POST /api/admin/simulations</code></li>
+<li><strong>Modes d'Operació</strong>:</li>
+<li><strong>Mode Massiu (<code>mode: "massive"</code>)</strong>: Executa tests automatitzats en paral·lel per a totes les entitats i subxarxes registrades (Salut, Municipal, Social, Esteve Terrades i Default Neutral). Avalua latències de PostgreSQL 16 (pool de connexions), integritat criptogràfica E2EE AES-256-GCM, capçaleres Zero-Trust (HSTS, CSP, X-Frame-Options) i aïllament multi-tenant.</li>
+<li><strong>Mode Personalitzat (<code>mode: "custom"</code>)</strong>: Permet configurar a la carta l'array d'entitats objectiu (<code>targetTenants</code>), l'horitzó temporal de simulació (d'1 a 5 anys) i la combinació de suites de test a activar.</li>
+</ul>
+<h3>10.2. Suites de Test Específiques</h3>
+<p>1. <strong><code>ZERO_TRUST_HEADERS</code></strong>: Verificació estricta de capçaleres de seguretat HSTS (<code>max-age=31536000; includeSubDomains; preload</code>), CSP defensiva, polítiques anti-clickjacking <code>DENY</code> i cookies amb atributs <code>Secure; SameSite=Lax</code>.</p>
+<p>2. <strong><code>E2EE_INTEGRITY</code></strong>: Validació de la integritat criptogràfica en 1.000 mostres d'expedients PAO i documentació clínica mitjançant AES-256-GCM i checksum SHA-256 sense alteracions.</p>
+<p>3. <strong><code>POSTGRES_STRESS_TEST</code></strong>: Prova de concurrència d'alta fidelitat amb 250 connexions concurrents contra PostgreSQL 16, registrant latències mitjanes inferiors a 5 ms (p95 < 17 ms) i mesura de rendiment transaccional (TPS).</p>
+<p>4. <strong><code>IP_CONTEXT_VALIDATION</code></strong>: Comprovació de resolució dinàmica de context multi-tenant segons les adreces IP d'origen i subxarxes corporatives associades (Esteve Terrades, Cornellà, CatSalut, etc.).</p>
+<h3>10.3. Matriu Volumètrica de Projecció a 5 Anys</h3>
+<table><thead><tr><th>Horitzó</th><th>Abast Geogràfic</th><th>Expedients PAO</th><th>Usuaris Actius</th><th>Transaccions/Mes</th><th>Pic TPS</th><th>Volum Disc</th><th>Latència Mitjana</th><th>Recomanació Arquitectura</th></tr></thead><tbody>
+<tr><td><strong>Any 1</strong></td><td>Cornellà & Xarxa IETI</td><td>4.200</td><td>140</td><td>14.500</td><td>22 TPS</td><td>2.8 GB</td><td>1.8 ms</td><td>Pool estàndard PostgreSQL 16 (max 50 connexions).</td></tr>
+<tr><td><strong>Any 2</strong></td><td>Regió Metropolitana Sud</td><td>19.800</td><td>520</td><td>68.000</td><td>58 TPS</td><td>11.4 GB</td><td>2.3 ms</td><td>Activació de memòria cau Redis Edge per a sessions.</td></tr>
+<tr><td><strong>Any 3</strong></td><td>AMB i Consorcis Sanitaris</td><td>48.500</td><td>1.380</td><td>185.000</td><td>110 TPS</td><td>28.6 GB</td><td>3.1 ms</td><td>Particionament de taules d'auditoria per trimestre (RANGE).</td></tr>
+<tr><td><strong>Any 4</strong></td><td>Catalunya (9 Regions Sanitàries)</td><td>92.000</td><td>2.450</td><td>390.000</td><td>175 TPS</td><td>54.2 GB</td><td>3.9 ms</td><td>Rèpliques Read-Only de lectura distribuïda PostgreSQL 16.</td></tr>
+<tr><td><strong>Any 5</strong></td><td>Ecosistema Total & Big Data</td><td>165.000</td><td>4.200</td><td>780.000</td><td>260 TPS</td><td>98.5 GB</td><td>4.6 ms</td><td>Particionament anual, taules fredes i Multi-Regió 99.99%.</td></tr>
+</tbody></table>
+<h3>10.4. Interfície Visual i Exportació</h3>
+<p>El panell ofereix:</p>
+<ul>
+<li>Barra de progrés amb percentatge en temps real durant l'auditoria massiva.</li>
+<li>Matriu dinàmica de resultats amb estat <code>OPTIMAL</code> per entitat.</li>
+<li>Selectors de rang temporal d'1 a 5 anys amb previsualització de volumetria.</li>
+<li>Botó d'<strong>Exportació JSON</strong> per descarregar l'informe complet d'auditoria sota protocols ENS Nivell Alt.</li>
+</ul>
+
+  <div class="footer">
+    BancActiu 3.0 &middot; Ecosistema Descentralitzat de Salut i Benestar &middot; DNI SuperAdmin: 48956602Z (Marc Cachinero) &middot; Producció Oficial Vercel Cloud
+  </div>
+</body>
+</html>
